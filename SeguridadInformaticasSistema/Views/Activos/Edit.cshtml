@@ -1,0 +1,125 @@
+﻿@model SeguridadInformatica.Models.Activos
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Activos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ActivosId" />
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control">
+                    <option value=" ">----- Seleccione el tipo de activo -----</option>
+                    <option value="Datos de carácter personal">Datos de carácter personal</option>
+                    <option value="Arquitectura del sistema">Arquitectura del sistema</option>
+                    <option value="[D] Datos / Información">[D] Datos / Información</option>
+                    <option value="[K] Claves criptograficas">[K] Claves criptograficas</option>
+                    <option value="[S] Servicios">[S] Servicios</option>
+                    <option value="[SW] Software - Aplicaciones informáticas">[SW] Software - Aplicaciones informáticas</option>
+                    <option value="[HW] Hardware - Equipamiento informático">[HW] Hardware - Equipamiento informático</option>
+                    <option value="[COM] Redes de comunicación">[COM] Redes de comunicación</option>
+                    <option value="[MEDIA] Soporte de información">[MEDIA] Soporte de información</option>
+                    <option value="[AUX] Equipamiento Auxiliar">[AUX] Equipamiento Auxiliar</option>
+                    <option value="[L] Instalaciones">[L] Instalaciones</option>
+                    <option value="[P] Personal">[P] Personal</option>
+                </select>
+                @*<input asp-for="TipoA" class="form-control" />*@
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Disponibilidad" class="control-label"></label>
+                <select asp-for="Disponibilidad" class="form-control">
+                    <option value=" ">----- Seleccione el peso del activo -----</option>
+                    <option value="0.0">0.0</option>
+                    <option value="0.1">0.1</option>
+                    <option value="0.2">0.2</option>
+                    <option value="0.3">0.3</option>
+                    <option value="0.4">0.4</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.8">0.8</option>
+                    <option value="0.9">0.9</option>
+                    <option value="1.0">1.0</option>
+                </select>
+                @*<input asp-for="TipoA" class="form-control" />*@
+                <span asp-validation-for="Disponibilidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Integridad" class="control-label"></label>
+                <select asp-for="Integridad" class="form-control">
+                    <option value=" ">----- Seleccione el peso del activo -----</option>
+                    <option value="0.0">0.0</option>
+                    <option value="0.1">0.1</option>
+                    <option value="0.2">0.2</option>
+                    <option value="0.3">0.3</option>
+                    <option value="0.4">0.4</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.8">0.8</option>
+                    <option value="0.9">0.9</option>
+                    <option value="1.0">1.0</option>
+                </select>
+                @*<input asp-for="TipoA" class="form-control" />*@
+                <span asp-validation-for="Integridad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Confidencialidad" class="control-label"></label>
+                <select asp-for="Confidencialidad" class="form-control">
+                    <option value=" ">----- Seleccione el peso del activo -----</option>
+                    <option value="0.0">0.0</option>
+                    <option value="0.1">0.1</option>
+                    <option value="0.2">0.2</option>
+                    <option value="0.3">0.3</option>
+                    <option value="0.4">0.4</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.8">0.8</option>
+                    <option value="0.9">0.9</option>
+                    <option value="1.0">1.0</option>
+                </select>
+                @*<input asp-for="TipoA" class="form-control" />*@
+                <span asp-validation-for="Confidencialidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuarios" class="control-label"></label>
+                @*<select asp-for="UsuariosId" class="form-control" asp-items="ViewBag.Usuario"></select>*@
+                <select asp-for="UsuariosId" class="form-control">
+                    <option value="">----- Seleccione el usuario -----</option> 
+                    @foreach (var item in ViewBag.Usuario)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="UsuariosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista de activos</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

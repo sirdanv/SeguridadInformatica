@@ -1,0 +1,54 @@
+﻿@model SeguridadInformatica.Models.Dimensiones
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Dimensiones</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Disponibilidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Disponibilidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Integridad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Integridad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Confidencialidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Confidencialidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Evaluacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Evaluacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuarios)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UsuariosId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Activos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ActivosId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.DimensionesId">Editar</a> |
+    <a asp-action="Index">Regresar a la lista de dimensiones</a>
+</div>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SeguridadInformatica.Models.Usuarios>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Crear Usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contraseña)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Contraseña)
+            </td>*@
+                <td>
+                    <span class="hidden-password">@Html.DisplayFor(modelItem => item.Contraseña)</span>
+                </td>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var hiddenPasswords = document.querySelectorAll('.hidden-password');
+                        hiddenPasswords.forEach(function (hiddenPassword) {
+                            var password = hiddenPassword.innerHTML;
+                            var hiddenValue = '*'.repeat(password.length);
+                            hiddenPassword.innerHTML = hiddenValue;
+                        });
+                    });
+                </script>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UsuariosId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.UsuariosId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.UsuariosId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
